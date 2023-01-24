@@ -4,22 +4,28 @@ import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_category")
 public class Category implements Serializable {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
+
+    @Transient
+    private Set<Product> products = new HashSet<>();
 
     public Category(){}
 
     public Category(Integer id, String name) {
         this.id = id;
         this.name = name;
+
     }
 
     public Integer getId() {
@@ -36,6 +42,10 @@ public class Category implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
     }
 
     @Override
