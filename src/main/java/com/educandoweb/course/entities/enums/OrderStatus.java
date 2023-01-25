@@ -1,8 +1,4 @@
-package com.educandoweb.course.enums;
-
-import com.educandoweb.course.entities.Order;
-
-import java.security.InvalidParameterException;
+package com.educandoweb.course.entities.enums;
 
 public enum OrderStatus {
 
