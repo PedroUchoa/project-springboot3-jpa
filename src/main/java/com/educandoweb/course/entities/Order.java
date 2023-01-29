@@ -85,6 +85,14 @@ public class Order implements Serializable {
         this.payment = payment;
     }
 
+    public Double getTotal(){
+        double total = 0.0;
+        for(OrderItem values : items){
+            total += values.getSubTotal();
+        }
+        return total;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,6 +105,8 @@ public class Order implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
 
 
 }
